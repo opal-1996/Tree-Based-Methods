@@ -147,3 +147,9 @@ Note that the Gini index and cross-entropy are more sensitive to changes in the 
 * The cost of using the tree is logarithmic in the number of data points used to train the tree.
 * Able to handle both numerical and categorical data.
 * Performs well even if its assumptions are somewhat violated by the true model from which the data were generated.
+
+
+### References
+
+https://hastie.su.domains/Papers/ESLII.pdf.
+
