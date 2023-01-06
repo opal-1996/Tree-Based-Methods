@@ -115,6 +115,7 @@ $$
 $$
 
 Where:
+
 $$
 \begin{aligned}
 \hat{p}_{m k}=\frac{1}{N_m} \sum_{x_i \in R_m} I\left(y_i=k\right)
