@@ -70,11 +70,12 @@ The preferred strategy is to grow a large tree and stop the splitting process wh
 
 $$
 \begin{aligned}
-N_m=the\ number\ of\ data\ points\ within\ region\ m\\
+N_m=the\ number\ of\ data\ points\ within\ region\ m \\
 \hat{c}_m=\frac{1}{N_m} \sum_{x_i \in R_m} y_i \\
-Q_m(T)=\frac{1}{N_m} \sum_{x_i \in R_m}\left(y_i-\hat{c}_m\right)^2
-\end{aligned} \\
+Q_m(T)=\frac{1}{N_m} \sum_{x_i \in R_m}\left(y_i-\hat{c}_m\right)^2\\
 C_\alpha(T)=\sum_{m=1}^{|T|} N_m Q_m(T)+\alpha|T|
+\end{aligned} 
+
 $$
 
 Where:
