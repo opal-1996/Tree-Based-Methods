@@ -7,11 +7,13 @@ Decision tree is a non-parametric supervised learning method utilized for classi
 For example, in the figure below, the observations satisfying the condition at each conjunction are assigned to the left branch, and the others to the right branch. The terminal nodes or leaves of the tree correspond to the regions $R_1$, $R_2$, $R_3$, $R_4$, and $R_5$. For regression tree, the model predicts Y with a constant $c_m$ in region $R_m$. The right panel of the figure is a perspective plot of the regression surface from this model.
 
 ![image](Images/img1.png)
+
 [Image source](https://hastie.su.domains/Papers/ESLII.pdf)
 
 In the example below, decision trees learn from data to approximate a sine curve with a set of if-then-else decision rules. The deeper the tree, the more complex the decision rules and the fitter the model.
 
 ![image](Images/img3.png)
+
 [Image source](https://scikit-learn.org/stable/modules/tree.html)
 
 ## Types of Decision Tree
@@ -34,8 +36,8 @@ Starting with all of the data, consider a splitting variable $j$ and split point
 
 $$
 \begin{aligned}
-R_1(j, s)=\left\{X \mid X_j \leq s\right\} \\
-R_2(j, s)=\left\{X \mid X_j>s\right\}
+R_1(j, s)=\{X \mid X_j \leq s\} \\
+R_2(j, s)=\{X \mid X_j>s\}
 \end{aligned}
 $$ 
 
@@ -68,7 +70,7 @@ The preferred strategy is to grow a large tree and stop the splitting process wh
 
 $$
 \begin{aligned}
-N_m=\#\left\{x_i \in R_m\right\} \\
+N_m=the\ number\ of\ data\ points\ within\ region\ m\\
 \hat{c}_m=\frac{1}{N_m} \sum_{x_i \in R_m} y_i \\
 Q_m(T)=\frac{1}{N_m} \sum_{x_i \in R_m}\left(y_i-\hat{c}_m\right)^2
 \end{aligned} \\
@@ -77,7 +79,6 @@ $$
 
 Where:
 
-* $N_m$ - the number of data points within region $m$
 * $\hat{c_m}$ - the constant value within region $m$
 * $Q_m$ - the sum of squares of region $m$
 * $T$ - the subtree 
@@ -95,15 +96,34 @@ For regression we used the squared-error node impurity measure $Q_m(T)$, while i
 
 `Misclassification Error`: $\frac{1}{N_m} \sum_{i \in R_m} I\left(y_i \neq k(m)\right)=1-\hat{p}_{m k(m)}$
 
-`Gini Index`: $\sum_{k \neq k^{\prime}} \hat{p}_{m k} \hat{p}_{m k^{\prime}}=\sum_{k=1}^K \hat{p}_{m k}\left(1-\hat{p}_{m k}\right)$
+`Gini Index`:
 
-`Cross-entropy (or Deviance)`: $-\sum_{k=1}^K \hat{p}_{m k} \log \hat{p}_{m k}$
+$$
+\begin{aligned}
+\sum_{k \neq k^{\prime}} \hat{p}_{m k} \hat{p}_{m k^{\prime}}=\sum_{k=1}^K \hat{p}_{m k}\left(1-\hat{p}_{m k}\right)
+\end{aligned}
+$$
+
+
+`Cross-entropy (or Deviance)`: 
+
+$$
+\begin{aligned}
+-\sum_{k=1}^K \hat{p}_{m k} \log \hat{p}_{m k}
+\end{aligned}
+$$
 
 Where:
+$$
+\begin{aligned}
+\hat{p}_{m k}=\frac{1}{N_m} \sum_{x_i \in R_m} I\left(y_i=k\right)
+\end{aligned}
+$$
 
-* $\hat{p}_{m k}=\frac{1}{N_m} \sum_{x_i \in R_m} I\left(y_i=k\right)$, standing for the proportion of majority class $k$ observations in node $m$.
+standing for the proportion of majority class $k$ observations in node $m$.
 
 ![image](Images/img2.png)
+
 [Image source](https://hastie.su.domains/Papers/ESLII.pdf)
 
 As is shown above in the figure, three impurity measures are similar, but cross-entropy and the Gini index are differentiable, and hence more amenable to numerical optimization. 
