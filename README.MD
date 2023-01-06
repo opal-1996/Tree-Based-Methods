@@ -149,7 +149,28 @@ Note that the Gini index and cross-entropy are more sensitive to changes in the 
 * Performs well even if its assumptions are somewhat violated by the true model from which the data were generated.
 
 
+## Random Forest
+
+### Introduction
+
+Random forest is an ensemble learning algorithm. The basic premise of the algorithm is that building a small decision tree with few features is a computationally cheap process. If we can build many small, weak decision trees in parallel, we can then combine the trees to form a single, strong learner by averaging or taking the majority vote. In practice, random forests are often found to be the most accurate learning algorithms to date.
+
+### Pseudocode of Random Forest
+
+![image](Images/img4.png)
+
+[Image source](https://pages.cs.wisc.edu/~matthewb/pages/notes/pdf/ensembles/RandomForests.pdf)
+
+### Why does random forest work?
+
+The random forest algorithm uses the bagging technique to build an ensemble of decision trees. Bagging is known to reduce the variance of the algorithm.
+
+However, the natural question to ask if why does the ensemble work better when we choose features from random subsets rather than learn the tree using the traditional algorithm? Recall that ensembles are more effective when the individual models that comprise them are uncorrelated. In traditional bagging with decision trees, the constituent decision trees may end up to be very correlated because the same features will tend to be used repeatedly to split the bootstrap samples. By restricting each split-test to a small, random sample of features, we can decrease the correlation between trees in the ensemble.
+
+Furthermore, by restricting the features that we consider at each node, we can learn each tree much faster, and therefore, can learn more decision trees in a given amount of time. Thus, not only can we build many more trees using the randomized tree learning algorithm, but these trees will also be less correlated. For these reasons, random forests tend to have excellent performance.
+
 ### References
 
 https://hastie.su.domains/Papers/ESLII.pdf.
 
+https://pages.cs.wisc.edu/~matthewb/pages/notes/pdf/ensembles/RandomForests.pdf.
